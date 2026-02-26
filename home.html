@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WSS IT Club · Home</title><link rel="icon" href="web.ico"><style>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WSS IT Club · Home</title><style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 body{background:#0b1220;color:#fff;min-height:100vh;transition:background 0.7s cubic-bezier(0.4,0,0.2,1),color 0.5s ease}
 .stage{max-width:1400px;margin:0 auto;padding:20px;position:relative}
@@ -205,7 +205,7 @@ body{background:#0b1220;color:#fff;min-height:100vh;transition:background 0.7s c
         </div>
       </div>
       <div class="hero-visual">
-        <div>🌐</div>
+        <div>⚡</div>
       </div>
     </div>
 
@@ -286,10 +286,11 @@ body{background:#0b1220;color:#fff;min-height:100vh;transition:background 0.7s c
 
 <script>
 (function(){
-const K1="wss_it_name",K2="wss_it_theme";
+const K1="wss_it_name",K2="wss_it_theme",K3="wss_audio_permission";
 const name = localStorage.getItem(K1) || "Guest";
 const cleanName = name.replace(/[^a-zA-Z]/g,'').slice(0,20) || "Guest";
 const savedTheme = localStorage.getItem(K2);
+const audioPermission = localStorage.getItem(K3) !== "false";
 
 const themes = {
   blue:{bg1:"#0b1a33",bg2:"#1e3a8a",text:"#ffffff"},
@@ -344,15 +345,15 @@ topics.forEach(t => {
 
 const data = {
   executives: {
-    president:{name:"Cristian Mohammed",role:"President",bio:"Leading the club with vision and passion. Specializes in full-stack development and team leadership.",skills:["Leadership","Full-Stack","Project Management"],img:"assets/default.png"},
-    vicePresident:{name:"Eli Mohammed",role:"Vice President",bio:"Expert in cybersecurity and ethical hacking. Leads workshops on network security.",skills:["Cyber Security","Ethical Hacking","Mentoring"],img:"assets/default.png"},
-    secretary:{name:"Solara Gonsalves",role:"Secretary",bio:"Manages documentation and social media. Creates engaging content for the club.",skills:["Content Creation","Social Media","Comms"],img:"assets/default.png"},
-    asstSecretary:{name:"Aniyah Payne",role:"Assistant Secretary",bio:"Web design and photography expert. Captures club moments creatively.",skills:["Web Design","Photography","Graphic Design"],img:"assets/default.png"},
-    pro:{name:"Divonte Lloyd",role:"P.R.O",bio:"Builds relationships with community. Networking and outreach specialist.",skills:["Public Speaking","Networking","Events"],img:"assets/default.png"},
-    asstPRO:{name:"Leah Morales",role:"Assistant P.R.O",bio:"Video editing and social media wizard. Creates viral content.",skills:["Video Editing","Social Media","Design"],img:"assets/default.png"},
-    cto:{name:"Keyshuan Sookdar",role:"CTO",bio:"Software architecture and game development lead. Technical mentor.",skills:["Software Architecture","Game Dev","System Design"],img:"assets/default.png"},
-    treasurer:{name:"Triston Samuel",role:"Treasurer",bio:"Manages finances and resources. Data analysis expert.",skills:["Data Analysis","Budgeting","Planning"],img:"assets/default.png"},
-    asstTreasurer:{name:"Hassan Mohammed",role:"Assistant Treasurer",bio:"App development and UI/UX design. Creates tracking tools.",skills:["App Dev","UI/UX","Fundraising"],img:"assets/default.png"}
+    president:{name:"Cristian Mohammed",role:"President",bio:"Leading the club with vision and passion. Specializes in full-stack development and team leadership.",skills:["Leadership","Full-Stack","Project Management"],img:"assets/executives/cristian.png"},
+    vicePresident:{name:"Eli Mohammed",role:"Vice President",bio:"Expert in cybersecurity and ethical hacking. Leads workshops on network security.",skills:["Cyber Security","Ethical Hacking","Mentoring"],img:"assets/executives/eli.png"},
+    secretary:{name:"Solara Gonsalves",role:"Secretary",bio:"Manages documentation and social media. Creates engaging content for the club.",skills:["Content Creation","Social Media","Comms"],img:"assets/executives/solara.png"},
+    asstSecretary:{name:"Aniyah Payne",role:"Assistant Secretary",bio:"Web design and photography expert. Captures club moments creatively.",skills:["Web Design","Photography","Graphic Design"],img:"assets/executives/aniyah.png"},
+    pro:{name:"Divonte Lloyd",role:"P.R.O",bio:"Builds relationships with community. Networking and outreach specialist.",skills:["Public Speaking","Networking","Events"],img:"assets/executives/divonte.png"},
+    asstPRO:{name:"Leah Morales",role:"Assistant P.R.O",bio:"Video editing and social media wizard. Creates viral content.",skills:["Video Editing","Social Media","Design"],img:"assets/executives/leah.png"},
+    cto:{name:"Keyshuan Sookdar",role:"CTO",bio:"Software architecture and game development lead. Technical mentor.",skills:["Software Architecture","Game Dev","System Design"],img:"assets/executives/keyshuan.png"},
+    treasurer:{name:"Triston Samuel",role:"Treasurer",bio:"Manages finances and resources. Data analysis expert.",skills:["Data Analysis","Budgeting","Planning"],img:"assets/executives/triston.png"},
+    asstTreasurer:{name:"Hassan Mohammed",role:"Assistant Treasurer",bio:"App development and UI/UX design. Creates tracking tools.",skills:["App Dev","UI/UX","Fundraising"],img:"assets/executives/hassan.png"}
   },
   schedule: [
     {date:"2026-03-05",topic:"Web Dev Workshop"},
@@ -377,7 +378,7 @@ const tree = document.getElementById('executiveTree');
 tree.innerHTML = `
   <div class="president-area">
     <div class="president-card" data-member="president">
-      <div class="avatar-large"><img src="${data.executives.president.img}" alt=""></div>
+      <div class="avatar-large"><img src="${data.executives.president.img}" onerror="this.src='assets/default.png'"></div>
       <h2>${data.executives.president.name}</h2>
       <p style="opacity:0.7;font-size:18px">${data.executives.president.role}</p>
     </div>
@@ -386,21 +387,21 @@ tree.innerHTML = `
     <div class="branch"><h3>EXECUTIVE</h3><div class="branch-members">
       ${['vicePresident','secretary','asstSecretary'].map(key=>`
         <div class="member-card" data-member="${key}">
-          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="avatar"><img src="${data.executives[key].img}" onerror="this.src='assets/default.png'"></div>
           <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
         </div>`).join('')}
     </div></div>
     <div class="branch"><h3>OPERATIONS</h3><div class="branch-members">
       ${['pro','asstPRO'].map(key=>`
         <div class="member-card" data-member="${key}">
-          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="avatar"><img src="${data.executives[key].img}" onerror="this.src='assets/default.png'"></div>
           <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
         </div>`).join('')}
     </div></div>
     <div class="branch"><h3>TECHNICAL</h3><div class="branch-members">
       ${['cto','treasurer','asstTreasurer'].map(key=>`
         <div class="member-card" data-member="${key}">
-          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="avatar"><img src="${data.executives[key].img}" onerror="this.src='assets/default.png'"></div>
           <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
         </div>`).join('')}
     </div></div>
@@ -438,6 +439,7 @@ document.querySelectorAll('[data-member]').forEach(card => {
     modalBio.textContent = member.bio;
     modalSkills.innerHTML = member.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
     modalAvatar.src = member.img;
+    modalAvatar.onerror = () => modalAvatar.src = 'assets/default.png';
     modal.classList.add('active');
   });
 });
@@ -449,24 +451,33 @@ const audio = document.getElementById('bgAudio');
 const audioControl = document.getElementById('audioControl');
 const audioIcon = document.getElementById('audioIcon');
 const audioText = document.getElementById('audioText');
-let isPlaying = true;
+let isPlaying = audioPermission;
 
 audio.volume = 0.3;
-audio.play().catch(() => {
-  isPlaying = false;
+
+if(isPlaying) {
+  audio.play().catch(() => {
+    isPlaying = false;
+    localStorage.setItem(K3, "false");
+    audioIcon.textContent = '🔇';
+    audioText.textContent = 'Play Music';
+  });
+} else {
   audioIcon.textContent = '🔇';
   audioText.textContent = 'Play Music';
-});
+}
 
 audioControl.addEventListener('click', () => {
   if(isPlaying) {
     audio.pause();
     audioIcon.textContent = '🔇';
     audioText.textContent = 'Play Music';
+    localStorage.setItem(K3, "false");
   } else {
     audio.play();
     audioIcon.textContent = '🔊';
     audioText.textContent = 'Now Playing';
+    localStorage.setItem(K3, "true");
   }
   isPlaying = !isPlaying;
 });
