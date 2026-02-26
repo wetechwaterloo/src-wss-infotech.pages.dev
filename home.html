@@ -1,0 +1,512 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WSS IT Club · Home</title><link rel="icon" href="web.ico"><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+body{background:#0b1220;color:#fff;min-height:100vh;transition:background 0.7s cubic-bezier(0.4,0,0.2,1),color 0.5s ease}
+.stage{max-width:1400px;margin:0 auto;padding:20px;position:relative}
+
+.fx{position:fixed;inset:-25%;pointer-events:none;opacity:0.4;z-index:-1;transform:translateZ(0)}
+.fx:before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 680px at 18% 22%,rgba(59,130,246,.30) 0%,transparent 62%),radial-gradient(900px 560px at 78% 30%,rgba(0,200,255,.16) 0%,transparent 66%),linear-gradient(135deg,var(--bg1),var(--bg2));filter:saturate(1.12);animation:pan 12s ease-in-out infinite}
+.fx:after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.10;animation:grain 9.5s linear infinite}
+@keyframes pan{0%{transform:translate(-2%,-1%) scale(1.03)}50%{transform:translate(2%,1%) scale(1.06)}100%{transform:translate(-2%,-1%) scale(1.03)}}
+@keyframes grain{0%{transform:translate(0,0)}100%{transform:translate(-45px,-45px)}}
+
+.audio-control{position:fixed;bottom:30px;right:30px;z-index:1000;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);border-radius:60px;padding:12px 24px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:15px;color:#fff;cursor:pointer;transition:all 0.3s cubic-bezier(0.2,0.9,0.3,1);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.audio-control:hover{transform:scale(1.05);background:rgba(59,130,246,0.2);border-color:rgba(59,130,246,0.5)}
+.audio-icon{font-size:24px;animation:audioPulse 2s infinite}
+@keyframes audioPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.audio-text{font-weight:600}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 30px;background:rgba(255,255,255,0.03);backdrop-filter:blur(12px);border-radius:60px;margin-bottom:30px;border:1px solid rgba(255,255,255,0.05);transform:translateY(0);animation:navSlide 0.8s cubic-bezier(0.2,0.9,0.3,1) forwards;position:sticky;top:20px;z-index:100}
+@keyframes navSlide{0%{opacity:0;transform:translateY(-50px) scale(0.9);filter:blur(10px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.logo{font-weight:900;font-size:28px;background:linear-gradient(135deg,#3b82f6,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px}
+.nav-links{display:flex;gap:25px}
+.nav-links a{color:#fff;text-decoration:none;font-weight:600;padding:10px 24px;border-radius:40px;transition:all 0.4s cubic-bezier(0.2,0.9,0.3,1);position:relative;overflow:hidden;cursor:pointer}
+.nav-links a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:0.5s}
+.nav-links a:hover::before{left:100%}
+.nav-links a:hover{background:rgba(59,130,246,0.2);transform:translateY(-2px)}
+.nav-links a.active{background:rgba(59,130,246,0.3);border:1px solid rgba(59,130,246,0.5)}
+.welcome-badge{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);padding:10px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.1)}
+.welcome-badge span{font-weight:600}
+.welcome-name{color:#3b82f6;font-weight:900}
+
+.page{position:relative;width:100%;min-height:calc(100vh - 120px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1)}
+.page.exit-left{animation:exitLeft 0.5s cubic-bezier(0.4,0,0.2,1) forwards;pointer-events:none}
+.page.enter-right{animation:enterRight 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
+.page.exit-right{animation:exitRight 0.5s cubic-bezier(0.4,0,0.2,1) forwards;pointer-events:none}
+.page.enter-left{animation:enterLeft 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
+@keyframes exitLeft{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(-100px);filter:blur(10px)}}
+@keyframes enterRight{0%{opacity:0;transform:translateX(100px);filter:blur(10px)}100%{opacity:1;transform:translateX(0);filter:blur(0)}}
+@keyframes exitRight{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(100px);filter:blur(10px)}}
+@keyframes enterLeft{0%{opacity:0;transform:translateX(-100px);filter:blur(10px)}100%{opacity:1;transform:translateX(0);filter:blur(0)}}
+
+.hero{min-height:85vh;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:40px 20px;margin-bottom:40px;position:relative}
+.hero-content{animation:heroContent 1s cubic-bezier(0.2,0.9,0.3,1) forwards}
+@keyframes heroContent{0%{opacity:0;transform:translateX(-100px) rotate(-2deg);filter:blur(15px)}100%{opacity:1;transform:translateX(0) rotate(0);filter:blur(0)}}
+.hero h1{font-size:clamp(48px,6vw,82px);font-weight:900;line-height:1;margin-bottom:25px;text-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.hero h1 span{display:block;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:20px;line-height:1.8;opacity:0.8;margin-bottom:40px;max-width:600px;animation:fadeUp 0.8s 0.3s forwards;opacity:0}
+@keyframes fadeUp{to{opacity:0.8;transform:translateY(0)}from{opacity:0;transform:translateY(30px)}}
+.stats-grid{display:flex;gap:50px;margin-top:30px}
+.stat-item{animation:statPop 0.6s forwards;opacity:0;transform:scale(0.8)}
+.stat-item:nth-child(1){animation-delay:0.4s}
+.stat-item:nth-child(2){animation-delay:0.5s}
+.stat-item:nth-child(3){animation-delay:0.6s}
+@keyframes statPop{to{opacity:1;transform:scale(1)}}
+.stat-number{font-size:48px;font-weight:900;color:#3b82f6;line-height:1}
+.stat-label{font-size:16px;opacity:0.7;letter-spacing:1px}
+.hero-visual{position:relative;animation:heroVisual 1.2s cubic-bezier(0.2,0.9,0.3,1) forwards;opacity:0;transform:translateX(100px) rotate(2deg)}
+@keyframes heroVisual{to{opacity:1;transform:translateX(0) rotate(0)}}
+.hero-visual div{font-size:min(350px,45vw);animation:levitate 6s ease-in-out infinite;filter:drop-shadow(0 40px 60px rgba(59,130,246,0.5));position:relative;z-index:2}
+.hero-visual::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;height:80%;background:radial-gradient(circle,rgba(59,130,246,0.2),transparent 70%);border-radius:50%;z-index:1}
+@keyframes levitate{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(5deg)}}
+
+.mission-section{background:linear-gradient(135deg,rgba(59,130,246,0.05),rgba(139,92,246,0.05));border-radius:80px;padding:80px;margin:40px 0 80px}
+.mission-text{font-size:22px;line-height:1.8;opacity:0.9;max-width:1000px;margin-bottom:30px}
+.founder{font-size:20px;color:#3b82f6;font-weight:600;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1)}
+.topics-cloud{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:40px}
+.topic{padding:12px 28px;background:rgba(255,255,255,0.03);border-radius:60px;font-size:16px;border:1px solid rgba(255,255,255,0.05);backdrop-filter:blur(5px);transition:all 0.4s cubic-bezier(0.2,0.9,0.3,1)}
+.topic:hover{transform:translateY(-8px) scale(1.1);background:rgba(59,130,246,0.2);border-color:rgba(59,130,246,0.5);box-shadow:0 20px 30px rgba(0,0,0,0.3)}
+
+.section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 20px;position:relative;margin-bottom:40px}
+.section-title{font-size:64px;font-weight:900;margin-bottom:60px;position:relative;display:inline-block;animation:titleReveal 1s forwards}
+@keyframes titleReveal{0%{opacity:0;transform:translateY(50px) scale(0.9)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.section-title::after{content:'';position:absolute;bottom:-10px;left:0;width:100px;height:4px;background:linear-gradient(90deg,#3b82f6,transparent);border-radius:2px}
+
+.stream-container{display:grid;grid-template-columns:2.2fr 1fr;gap:40px;background:rgba(255,255,255,0.02);border-radius:60px;padding:40px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.03);transform-style:preserve-3d;animation:cardFloat 0.9s forwards}
+.stream-preview{background:#000;border-radius:40px;overflow:hidden;aspect-ratio:16/9;position:relative;cursor:pointer;transform:translateZ(20px);box-shadow:0 40px 80px rgba(0,0,0,0.5);transition:transform 0.5s cubic-bezier(0.2,0.9,0.3,1)}
+.stream-preview:hover{transform:translateZ(30px) scale(1.02)}
+.stream-preview iframe{width:100%;height:100%;border:none}
+.stream-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f172a,#1e293b);gap:20px;position:relative;overflow:hidden}
+.stream-placeholder::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(59,130,246,0.2),transparent 70%);animation:pulseGlow 3s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{opacity:0.5}50%{opacity:1}}
+.stream-placeholder div{font-size:80px;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.stream-info{padding:20px}
+.stream-info h3{font-size:32px;margin-bottom:20px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stream-meta{display:flex;gap:15px;margin:30px 0;flex-wrap:wrap}
+.stream-tag{padding:8px 20px;background:rgba(59,130,246,0.1);border-radius:40px;font-size:14px;border:1px solid rgba(59,130,246,0.3);backdrop-filter:blur(5px)}
+.stream-schedule{list-style:none;padding:0}
+.stream-schedule li{padding:16px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;transition:0.3s;border-radius:20px}
+.stream-schedule li:hover{background:rgba(255,255,255,0.03);transform:translateX(10px)}
+
+.tree-section{padding:60px 0}
+.tree-container{display:flex;flex-direction:column;align-items:center;gap:60px;margin-top:40px}
+.president-area{text-align:center;animation:presidentIn 1s forwards}
+@keyframes presidentIn{0%{opacity:0;transform:scale(0.8)}100%{opacity:1;transform:scale(1)}}
+.president-card{display:inline-block;cursor:pointer;transition:all 0.4s cubic-bezier(0.2,0.9,0.3,1)}
+.president-card:hover{transform:translateY(-15px) scale(1.05)}
+.president-card .avatar-large{width:160px;height:160px;border-radius:50%;margin:0 auto 20px;border:4px solid #3b82f6;overflow:hidden;box-shadow:0 20px 40px rgba(59,130,246,0.4)}
+.president-card img{width:100%;height:100%;object-fit:cover}
+.tree-branches{display:flex;justify-content:center;gap:80px;flex-wrap:wrap;width:100%;position:relative}
+.tree-branches::before{content:'';position:absolute;top:-40px;left:50%;width:2px;height:40px;background:linear-gradient(180deg,transparent,rgba(59,130,246,0.5))}
+.branch{flex:1;min-width:280px;display:flex;flex-direction:column;align-items:center;gap:30px;animation:branchGrow 0.8s forwards;transform-origin:top}
+@keyframes branchGrow{0%{opacity:0;transform:scaleY(0)}100%{opacity:1;transform:scaleY(1)}}
+.branch h3{color:#3b82f6;font-size:24px;margin-bottom:10px;position:relative}
+.branch h3::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:40px;height:3px;background:#3b82f6;border-radius:2px}
+.branch-members{display:flex;flex-direction:column;gap:20px;width:100%}
+.member-card{background:rgba(255,255,255,0.03);border-radius:40px;padding:25px;cursor:pointer;transition:all 0.4s cubic-bezier(0.2,0.9,0.3,1);border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(10px);display:flex;align-items:center;gap:20px}
+.member-card:hover{transform:translateY(-10px) scale(1.02);background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.3);box-shadow:0 20px 30px rgba(0,0,0,0.4)}
+.member-card .avatar{width:70px;height:70px;border-radius:35px;overflow:hidden;border:3px solid rgba(59,130,246,0.5);transition:0.3s}
+.member-card:hover .avatar{border-color:#3b82f6}
+.member-card img{width:100%;height:100%;object-fit:cover}
+.member-info h4{font-size:20px;margin-bottom:5px}
+.member-info p{font-size:14px;opacity:0.7}
+
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);z-index:1000;align-items:center;justify-content:center}
+.modal.active{display:flex;animation:modalBackdrop 0.3s}
+@keyframes modalBackdrop{from{opacity:0}to{opacity:1}}
+.modal-content{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:70px;padding:50px;max-width:550px;width:90%;position:relative;border:1px solid rgba(255,255,255,0.1);transform:scale(0.3) rotate(-10deg);animation:modalPop 0.6s cubic-bezier(0.2,0.9,0.3,1) forwards}
+@keyframes modalPop{to{transform:scale(1) rotate(0)}}
+.modal-close{position:absolute;top:25px;right:25px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:24px;cursor:pointer;transition:0.3s}
+.modal-close:hover{transform:rotate(90deg);background:rgba(255,59,59,0.3)}
+.modal-avatar{width:150px;height:150px;border-radius:50%;margin:0 auto 25px;overflow:hidden;border:5px solid #3b82f6;box-shadow:0 30px 40px rgba(59,130,246,0.4)}
+.modal-avatar img{width:100%;height:100%;object-fit:cover}
+.modal h2{font-size:36px;margin-bottom:5px;text-align:center}
+.modal .role{color:#3b82f6;font-size:20px;margin-bottom:25px;text-align:center}
+.modal .bio{line-height:1.9;opacity:0.9;margin-bottom:30px;font-size:18px}
+.skills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.skill-tag{padding:10px 24px;background:rgba(59,130,246,0.15);border-radius:40px;font-size:15px;border:1px solid rgba(59,130,246,0.3)}
+
+.goals-section{padding:60px 0}
+.goals-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;perspective:1000px}
+.goal-card{background:rgba(255,255,255,0.02);border-radius:50px;padding:40px;border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(10px);transition:all 0.5s cubic-bezier(0.2,0.9,0.3,1);animation:cardRise 0.8s forwards;opacity:0;position:relative;overflow:hidden}
+.goal-card:nth-child(1){animation-delay:0.1s}
+.goal-card:nth-child(2){animation-delay:0.2s}
+.goal-card:nth-child(3){animation-delay:0.3s}
+.goal-card:nth-child(4){animation-delay:0.4s}
+@keyframes cardRise{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(100px)}}
+.goal-card:hover{transform:translateY(-15px);background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.3);box-shadow:0 30px 50px rgba(0,0,0,0.5)}
+.goal-card:hover .goal-icon{transform:scale(1.2) rotate(10deg)}
+.goal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#3b82f6,#c084fc);transform:translateX(-100%);transition:transform 0.6s}
+.goal-card:hover::before{transform:translateX(0)}
+.goal-icon{font-size:48px;margin-bottom:25px;transition:0.4s}
+.goal-card h3{font-size:28px;margin-bottom:25px;color:#3b82f6}
+.goal-items{list-style:none;padding:0}
+.goal-items li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:18px;display:flex;align-items:center;gap:12px;transition:0.3s}
+.goal-items li:last-child{border-bottom:none}
+.goal-items li:hover{transform:translateX(10px);color:#3b82f6}
+.goal-items li::before{content:"→";color:#3b82f6;opacity:0;transform:translateX(-10px);transition:0.3s}
+.goal-items li:hover::before{opacity:1;transform:translateX(0)}
+.goal-progress{margin-top:30px;height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden}
+.goal-progress-bar{height:100%;width:75%;background:linear-gradient(90deg,#3b82f6,#c084fc);border-radius:4px;animation:progressPulse 2s infinite}
+@keyframes progressPulse{0%,100%{opacity:1}50%{opacity:0.7}}
+
+.projects-section{padding:60px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.project-card{background:rgba(255,255,255,0.02);border-radius:40px;padding:30px;border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(10px);transition:0.4s}
+.project-card:hover{transform:translateY(-10px);background:rgba(59,130,246,0.1);border-color:#3b82f6}
+.project-icon{font-size:40px;margin-bottom:20px}
+.project-card h4{font-size:22px;margin-bottom:10px}
+.project-card p{opacity:0.7;font-size:14px}
+
+@media (max-width:968px){
+  .hero{grid-template-columns:1fr;text-align:center;min-height:auto}
+  .hero p{margin-left:auto;margin-right:auto}
+  .stats-grid{justify-content:center}
+  .stream-container{grid-template-columns:1fr}
+  .section-title{font-size:48px}
+  .mission-section{padding:40px}
+  .goals-grid{grid-template-columns:1fr}
+  .projects-section{grid-template-columns:1fr}
+}
+</style></head><body>
+<div class="fx"></div>
+<div class="audio-control" id="audioControl">
+  <span class="audio-icon" id="audioIcon">🔊</span>
+  <span class="audio-text" id="audioText">Now Playing</span>
+</div>
+<audio id="bgAudio" loop preload="auto">
+  <source src="media/BackgroundaudioCREDITSPAGE(Raindance (feat. Tems))NOCOPYRIGHT.mp3" type="audio/mpeg">
+</audio>
+
+<div class="stage">
+  <nav class="nav">
+    <div class="logo">WSS://IT</div>
+    <div class="nav-links">
+      <a class="active" data-page="home">HOME</a>
+      <a data-page="stream">STREAM</a>
+      <a data-page="team">TEAM</a>
+      <a data-page="goals">GOALS</a>
+    </div>
+    <div class="welcome-badge" id="welcomeBadge">
+      <span>👋</span>
+      <span id="greeting">Good evening</span>
+      <span class="welcome-name" id="userName">Guest</span>
+    </div>
+  </nav>
+
+  <div id="homePage" class="page">
+    <div class="hero">
+      <div class="hero-content">
+        <h1><span>BUILD THE</span> <span>FUTURE</span></h1>
+        <p>Inspiring and equipping students with skills for the modern digital world.</p>
+        <div class="stats-grid">
+          <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">MEMBERS</div></div>
+          <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">PROJECTS</div></div>
+          <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">WORKSHOPS</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div>🌐</div>
+      </div>
+    </div>
+
+    <div class="mission-section">
+      <div class="mission-text" id="missionText">Our mission as a club is to inspire and equip students with the skills and knowledge needed to succeed in a new age modern digital world. To help the children reach this goal, our hot topics include: ethical hacking, decompiling applications to find viruses, testing, gaming, webpage development, coding, photography, drones, social media management, creating apps, editing, careers in IT, etc.</div>
+      <div class="founder">Founded by: Mr. Danual Bridgemohan · IT Head of Department</div>
+      <div class="topics-cloud" id="topicsCloud"></div>
+    </div>
+
+    <div class="projects-section">
+      <div class="project-card">
+        <div class="project-icon">🌐</div>
+        <h4>Club Website</h4>
+        <p>Live and interactive platform for members</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🔒</div>
+        <h4>Cyber Labs</h4>
+        <p>Hands-on security challenges</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📱</div>
+        <h4>Study App</h4>
+        <p>Mobile learning tool in development</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="streamPage" class="page" style="display:none">
+    <div class="section">
+      <h2 class="section-title">LIVE STREAM</h2>
+      <div class="stream-container">
+        <div class="stream-preview" id="streamPreview">
+          <div class="stream-placeholder" id="streamPlaceholder" style="display:none">
+            <div>🎥</div>
+            <h3>OFFLINE</h3>
+            <p>Next stream: Thursday 4PM</p>
+          </div>
+          <iframe id="streamFrame" width="100%" height="100%" src="https://www.youtube.com/embed/nIyaCRNwxhU?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen style="display:block"></iframe>
+        </div>
+        <div class="stream-info">
+          <h3>WSS IT CLUB TV</h3>
+          <div class="stream-meta">
+            <span class="stream-tag">🔴 LIVE NOW</span>
+            <span class="stream-tag">📍 IT CLUB ROOM</span>
+          </div>
+          <ul class="stream-schedule" id="streamSchedule"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="teamPage" class="page" style="display:none">
+    <div class="section">
+      <h2 class="section-title">EXECUTIVE TREE</h2>
+      <div class="tree-container" id="executiveTree"></div>
+    </div>
+  </div>
+
+  <div id="goalsPage" class="page" style="display:none">
+    <div class="section">
+      <h2 class="section-title">CLUB GOALS</h2>
+      <div class="goals-grid" id="goalsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="memberModal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">✕</button>
+    <div class="modal-avatar"><img id="modalAvatar" src="assets/default.png" alt=""></div>
+    <h2 id="modalName"></h2>
+    <div class="role" id="modalRole"></div>
+    <div class="bio" id="modalBio"></div>
+    <div class="skills" id="modalSkills"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const K1="wss_it_name",K2="wss_it_theme";
+const name = localStorage.getItem(K1) || "Guest";
+const cleanName = name.replace(/[^a-zA-Z]/g,'').slice(0,20) || "Guest";
+const savedTheme = localStorage.getItem(K2);
+
+const themes = {
+  blue:{bg1:"#0b1a33",bg2:"#1e3a8a",text:"#ffffff"},
+  red:{bg1:"#2d1a1a",bg2:"#7f1d1d",text:"#ffffff"},
+  green:{bg1:"#0a2e1a",bg2:"#14532d",text:"#ffffff"},
+  purple:{bg1:"#1e1a3a",bg2:"#4a1d8c",text:"#ffffff"},
+  pink:{bg1:"#2d1a2d",bg2:"#831843",text:"#ffffff"},
+  orange:{bg1:"#2d1f1a",bg2:"#9a3412",text:"#ffffff"},
+  teal:{bg1:"#0a2e2e",bg2:"#115e59",text:"#ffffff"},
+  cyan:{bg1:"#0a2e3a",bg2:"#155e75",text:"#ffffff"},
+  indigo:{bg1:"#1a1a3a",bg2:"#312e81",text:"#ffffff"},
+  amber:{bg1:"#2d1f0a",bg2:"#92400e",text:"#ffffff"},
+  emerald:{bg1:"#0a2e1a",bg2:"#065f46",text:"#ffffff"},
+  rose:{bg1:"#2d1a24",bg2:"#881337",text:"#ffffff"},
+  fuchsia:{bg1:"#2a1a3a",bg2:"#701a75",text:"#ffffff"},
+  violet:{bg1:"#1e1a4a",bg2:"#5b21b6",text:"#ffffff"},
+  light:{bg1:"#f0f4fa",bg2:"#d9e2ef",text:"#0b1220"},
+  sunset:{bg1:"#2d1a2d",bg2:"#9d174d",text:"#ffffff"},
+  ocean:{bg1:"#0a2e3a",bg2:"#164e63",text:"#ffffff"},
+  forest:{bg1:"#0a2e1a",bg2:"#166534",text:"#ffffff"},
+  midnight:{bg1:"#030712",bg2:"#111827",text:"#ffffff"},
+  lavender:{bg1:"#1e1b4b",bg2:"#4c1d95",text:"#ffffff"}
+};
+
+if(savedTheme && themes[savedTheme]){
+  const t = themes[savedTheme];
+  document.body.style.background = `linear-gradient(135deg, ${t.bg1}, ${t.bg2})`;
+  document.body.style.color = t.text;
+}
+
+const hour = new Date().getHours();
+let greeting = "Good morning";
+if(hour >= 12 && hour < 17) greeting = "Good afternoon";
+else if(hour >= 17 && hour < 22) greeting = "Good evening";
+else if(hour >= 22 || hour < 5) greeting = "Good night";
+document.getElementById('greeting').textContent = greeting;
+document.getElementById('userName').textContent = cleanName;
+
+const topics = [
+  "Ethical Hacking", "Decompiling Apps", "Virus Testing", "Game Dev", 
+  "Web Development", "Coding", "Photography", "Drones", 
+  "Social Media", "App Creation", "Editing", "IT Careers"
+];
+
+const cloud = document.getElementById('topicsCloud');
+topics.forEach(t => {
+  const tag = document.createElement('span');
+  tag.className = 'topic';
+  tag.textContent = t;
+  cloud.appendChild(tag);
+});
+
+const data = {
+  executives: {
+    president:{name:"Cristian Mohammed",role:"President",bio:"Leading the club with vision and passion. Specializes in full-stack development and team leadership.",skills:["Leadership","Full-Stack","Project Management"],img:"assets/default.png"},
+    vicePresident:{name:"Eli Mohammed",role:"Vice President",bio:"Expert in cybersecurity and ethical hacking. Leads workshops on network security.",skills:["Cyber Security","Ethical Hacking","Mentoring"],img:"assets/default.png"},
+    secretary:{name:"Solara Gonsalves",role:"Secretary",bio:"Manages documentation and social media. Creates engaging content for the club.",skills:["Content Creation","Social Media","Comms"],img:"assets/default.png"},
+    asstSecretary:{name:"Aniyah Payne",role:"Assistant Secretary",bio:"Web design and photography expert. Captures club moments creatively.",skills:["Web Design","Photography","Graphic Design"],img:"assets/default.png"},
+    pro:{name:"Divonte Lloyd",role:"P.R.O",bio:"Builds relationships with community. Networking and outreach specialist.",skills:["Public Speaking","Networking","Events"],img:"assets/default.png"},
+    asstPRO:{name:"Leah Morales",role:"Assistant P.R.O",bio:"Video editing and social media wizard. Creates viral content.",skills:["Video Editing","Social Media","Design"],img:"assets/default.png"},
+    cto:{name:"Keyshuan Sookdar",role:"CTO",bio:"Software architecture and game development lead. Technical mentor.",skills:["Software Architecture","Game Dev","System Design"],img:"assets/default.png"},
+    treasurer:{name:"Triston Samuel",role:"Treasurer",bio:"Manages finances and resources. Data analysis expert.",skills:["Data Analysis","Budgeting","Planning"],img:"assets/default.png"},
+    asstTreasurer:{name:"Hassan Mohammed",role:"Assistant Treasurer",bio:"App development and UI/UX design. Creates tracking tools.",skills:["App Dev","UI/UX","Fundraising"],img:"assets/default.png"}
+  },
+  schedule: [
+    {date:"2026-03-05",topic:"Web Dev Workshop"},
+    {date:"2026-03-12",topic:"Cyber Security"},
+    {date:"2026-03-19",topic:"Game Design"},
+    {date:"2026-03-26",topic:"AI & ML"}
+  ],
+  goals: [
+    {title:"Q1 2026",icon:"🎯",items:["Launch redesigned website","Recruit 20 new members","Host 6 workshops","Start mentor program"],progress:75},
+    {title:"Q2 2026",icon:"🚀",items:["School-wide hackathon","Community project","4 guest speakers","Tech competition"],progress:60},
+    {title:"Q3 2026",icon:"💡",items:["Build 3 student apps","Cyber challenge","Tech fair","Start podcast"],progress:40},
+    {title:"Q4 2026",icon:"🏆",items:["Year-end showcase","Awards ceremony","Portfolio prep","Leadership handover"],progress:25}
+  ]
+};
+
+const scheduleEl = document.getElementById('streamSchedule');
+data.schedule.forEach(s=>{
+  scheduleEl.innerHTML += `<li><span>${s.date}</span><span>${s.topic}</span></li>`;
+});
+
+const tree = document.getElementById('executiveTree');
+tree.innerHTML = `
+  <div class="president-area">
+    <div class="president-card" data-member="president">
+      <div class="avatar-large"><img src="${data.executives.president.img}" alt=""></div>
+      <h2>${data.executives.president.name}</h2>
+      <p style="opacity:0.7;font-size:18px">${data.executives.president.role}</p>
+    </div>
+  </div>
+  <div class="tree-branches">
+    <div class="branch"><h3>EXECUTIVE</h3><div class="branch-members">
+      ${['vicePresident','secretary','asstSecretary'].map(key=>`
+        <div class="member-card" data-member="${key}">
+          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
+        </div>`).join('')}
+    </div></div>
+    <div class="branch"><h3>OPERATIONS</h3><div class="branch-members">
+      ${['pro','asstPRO'].map(key=>`
+        <div class="member-card" data-member="${key}">
+          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
+        </div>`).join('')}
+    </div></div>
+    <div class="branch"><h3>TECHNICAL</h3><div class="branch-members">
+      ${['cto','treasurer','asstTreasurer'].map(key=>`
+        <div class="member-card" data-member="${key}">
+          <div class="avatar"><img src="${data.executives[key].img}"></div>
+          <div class="member-info"><h4>${data.executives[key].name}</h4><p>${data.executives[key].role}</p></div>
+        </div>`).join('')}
+    </div></div>
+  </div>
+`;
+
+const goalsGrid = document.getElementById('goalsGrid');
+data.goals.forEach(g=>{
+  goalsGrid.innerHTML += `
+    <div class="goal-card">
+      <div class="goal-icon">${g.icon}</div>
+      <h3>${g.title}</h3>
+      <ul class="goal-items">
+        ${g.items.map(item=>`<li>${item}</li>`).join('')}
+      </ul>
+      <div class="goal-progress">
+        <div class="goal-progress-bar" style="width:${g.progress}%"></div>
+      </div>
+    </div>
+  `;
+});
+
+const modal = document.getElementById('memberModal');
+const modalName = document.getElementById('modalName');
+const modalRole = document.getElementById('modalRole');
+const modalBio = document.getElementById('modalBio');
+const modalSkills = document.getElementById('modalSkills');
+const modalAvatar = document.getElementById('modalAvatar');
+
+document.querySelectorAll('[data-member]').forEach(card => {
+  card.addEventListener('click', () => {
+    const member = data.executives[card.dataset.member];
+    modalName.textContent = member.name;
+    modalRole.textContent = member.role;
+    modalBio.textContent = member.bio;
+    modalSkills.innerHTML = member.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
+    modalAvatar.src = member.img;
+    modal.classList.add('active');
+  });
+});
+
+document.getElementById('closeModal').onclick = () => modal.classList.remove('active');
+modal.onclick = (e) => {if(e.target === modal) modal.classList.remove('active')};
+
+const audio = document.getElementById('bgAudio');
+const audioControl = document.getElementById('audioControl');
+const audioIcon = document.getElementById('audioIcon');
+const audioText = document.getElementById('audioText');
+let isPlaying = true;
+
+audio.volume = 0.3;
+audio.play().catch(() => {
+  isPlaying = false;
+  audioIcon.textContent = '🔇';
+  audioText.textContent = 'Play Music';
+});
+
+audioControl.addEventListener('click', () => {
+  if(isPlaying) {
+    audio.pause();
+    audioIcon.textContent = '🔇';
+    audioText.textContent = 'Play Music';
+  } else {
+    audio.play();
+    audioIcon.textContent = '🔊';
+    audioText.textContent = 'Now Playing';
+  }
+  isPlaying = !isPlaying;
+});
+
+const pages = {
+  home: document.getElementById('homePage'),
+  stream: document.getElementById('streamPage'),
+  team: document.getElementById('teamPage'),
+  goals: document.getElementById('goalsPage')
+};
+
+let currentPage = 'home';
+
+document.querySelectorAll('[data-page]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newPage = link.dataset.page;
+    if(newPage === currentPage) return;
+    
+    const direction = ['home','stream','team','goals'].indexOf(newPage) > ['home','stream','team','goals'].indexOf(currentPage) ? 'right' : 'left';
+    
+    pages[currentPage].classList.add(direction === 'right' ? 'exit-left' : 'exit-right');
+    
+    setTimeout(() => {
+      pages[currentPage].style.display = 'none';
+      pages[currentPage].classList.remove('exit-left', 'exit-right');
+      
+      pages[newPage].style.display = 'block';
+      pages[newPage].classList.add(direction === 'right' ? 'enter-right' : 'enter-left');
+      
+      setTimeout(() => {
+        pages[newPage].classList.remove('enter-right', 'enter-left');
+      }, 500);
+      
+      document.querySelectorAll('[data-page]').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      currentPage = newPage;
+    }, 400);
+  });
+});
+})();
+</script>
+</body></html>

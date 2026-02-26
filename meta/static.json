@@ -1,0 +1,263 @@
+{
+  "club": {
+    "name": "WSS Info Tech Club",
+    "established": 2026,
+    "description": "Inspiring and equipping students with skills for the modern digital world",
+    "mission": "Our mission as a club is to inspire and equip students with the skills and knowledge needed to succeed in a new age modern digital world. To help the children reach this goal, our hot topics include: ethical hacking, decompiling applications to find viruses, testing, gaming, webpage development, coding, photography, drones, social media management, creating apps, editing, careers in IT, etc. The IT club was founded by our IT Head Of Department, Mr. Danual Bridgemohan.",
+    "stats": {
+      "members": 78,
+      "projects": 34,
+      "workshops": 52
+    }
+  },
+  
+  "topics": [
+    "Ethical Hacking",
+    "Decompiling Applications",
+    "Virus Testing",
+    "Game Development",
+    "Web Development",
+    "Coding",
+    "Photography",
+    "Drones",
+    "Social Media Management",
+    "App Creation",
+    "Video Editing",
+    "IT Careers",
+    "Cyber Security",
+    "Network Security",
+    "UI/UX Design",
+    "Artificial Intelligence",
+    "Cloud Computing",
+    "Robotics"
+  ],
+
+  "executives": {
+    "president": {
+      "name": "Cristian Mohammed",
+      "role": "President",
+      "bio": "Leading the club with vision and passion for technology. Cristian specializes in full-stack development and team leadership, guiding members through complex projects and fostering an innovative learning environment. Under his leadership, the club has grown to 70+ members and launched multiple successful initiatives.",
+      "skills": ["Leadership", "Full-Stack Development", "Project Management", "Public Speaking"],
+      "image": "assets/executives/cristian.png",
+      "fallback": "assets/default.png",
+      "email": "cristian.mohammed@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Built first website at age 12"
+    },
+    "vicePresident": {
+      "name": "Eli Mohammed",
+      "role": "Vice President",
+      "bio": "Supporting club operations and mentoring members. Eli is an expert in cybersecurity and ethical hacking, regularly leading workshops on network security and penetration testing. He's passionate about teaching others how to stay safe in the digital world.",
+      "skills": ["Cyber Security", "Ethical Hacking", "Network Security", "Mentoring"],
+      "image": "assets/executives/eli.png",
+      "fallback": "assets/default.png",
+      "email": "eli.mohammed@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Once found a bug in a major app"
+    },
+    "secretary": {
+      "name": "Solara Gonsalves",
+      "role": "Secretary",
+      "bio": "Managing club documentation and communications. Solara ensures everything runs smoothly behind the scenes, from meeting minutes to member communications. She's also our social media strategist, creating engaging content that showcases club achievements.",
+      "skills": ["Content Creation", "Social Media", "Documentation", "Communication"],
+      "image": "assets/executives/solara.png",
+      "fallback": "assets/default.png",
+      "email": "solara.gonsalves@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Has 10k followers on tech TikTok"
+    },
+    "asstSecretary": {
+      "name": "Aniyah Payne",
+      "role": "Assistant Secretary",
+      "bio": "Helping coordinate club activities and events. Aniyah brings creativity to the team with her web design skills and photography expertise. She's responsible for capturing our best moments and creating visual content for the club.",
+      "skills": ["Web Design", "Photography", "Event Planning", "Graphic Design"],
+      "image": "assets/executives/aniyah.png",
+      "fallback": "assets/default.png",
+      "email": "aniyah.payne@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Photos featured in school calendar"
+    },
+    "pro": {
+      "name": "Divonte Lloyd",
+      "role": "P.R.O",
+      "bio": "Building relationships and promoting club activities. Divonte is our public face, connecting with other clubs, sponsors, and the community. His networking skills have brought numerous guest speakers and workshop opportunities to the club.",
+      "skills": ["Public Speaking", "Community Outreach", "Networking", "Event Coordination"],
+      "image": "assets/executives/divonte.png",
+      "fallback": "assets/default.png",
+      "email": "divonte.lloyd@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Organized inter-school tech meetup"
+    },
+    "asstPRO": {
+      "name": "Leah Morales",
+      "role": "Assistant P.R.O",
+      "bio": "Supporting outreach initiatives and social media presence. Leah's graphic design and video editing skills help create stunning promotional materials. She manages our Instagram and TikTok, growing our online community.",
+      "skills": ["Graphic Design", "Video Editing", "Social Media", "Content Strategy"],
+      "image": "assets/executives/leah.png",
+      "fallback": "assets/default.png",
+      "email": "leah.morales@wss.edu",
+      "joinDate": "2025",
+      "funFact": "Videos have 500k+ combined views"
+    },
+    "cto": {
+      "name": "Keyshuan Sookdar",
+      "role": "Chief Technical Officer",
+      "bio": "Leading technical projects and mentoring developers. Keyshuan is our tech genius, specializing in software architecture and game development. He's led the development of 5 major club projects and teaches advanced coding workshops.",
+      "skills": ["Software Architecture", "Game Development", "Team Leadership", "System Design"],
+      "image": "assets/executives/keyshuan.png",
+      "fallback": "assets/default.png",
+      "email": "keyshuan.sookdar@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Built game engine from scratch"
+    },
+    "treasurer": {
+      "name": "Triston Samuel",
+      "role": "Treasurer",
+      "bio": "Managing club finances and resources. Triston ensures we have the equipment and resources needed for all our projects. His data analysis skills help the club make informed decisions about investments and fundraising.",
+      "skills": ["Data Analysis", "Financial Planning", "Resource Management", "Budgeting"],
+      "image": "assets/executives/triston.png",
+      "fallback": "assets/default.png",
+      "email": "triston.samuel@wss.edu",
+      "joinDate": "2024",
+      "funFact": "Saved club $2000 through smart budgeting"
+    },
+    "asstTreasurer": {
+      "name": "Hassan Mohammed",
+      "role": "Assistant Treasurer",
+      "bio": "Assisting with budget management and fundraising. Hassan combines his passion for app development with financial responsibilities, creating tools to track club expenses. He's also our UI/UX design expert.",
+      "skills": ["App Development", "UI/UX Design", "Fundraising", "Financial Tracking"],
+      "image": "assets/executives/hassan.png",
+      "fallback": "assets/default.png",
+      "email": "hassan.mohammed@wss.edu",
+      "joinDate": "2025",
+      "funFact": "Designed club's expense tracking app"
+    }
+  },
+
+  "founder": {
+    "name": "Mr. Danual Bridgemohan",
+    "role": "IT Head of Department & Founder",
+    "bio": "Founded the IT Club in 2024 with a vision to create a space where students could explore technology beyond the classroom. Mr. Bridgemohan has been teaching IT for over 15 years and believes in hands-on, project-based learning. His guidance has helped countless students pursue careers in technology.",
+    "image": "assets/founder.png",
+    "fallback": "assets/default.png"
+  },
+
+  "streams": {
+    "youtubeId": "nIyaCRNwxhU",
+    "schedule": "Thursdays at 4:00 PM",
+    "location": "IT Club Room / Virtual",
+    "upcoming": [
+      {
+        "date": "2026-03-05",
+        "topic": "Web Dev Workshop",
+        "host": "Cristian Mohammed"
+      },
+      {
+        "date": "2026-03-12",
+        "topic": "Cyber Security Basics",
+        "host": "Eli Mohammed"
+      },
+      {
+        "date": "2026-03-19",
+        "topic": "Game Design 101",
+        "host": "Keyshuan Sookdar"
+      },
+      {
+        "date": "2026-03-26",
+        "topic": "AI & Machine Learning Intro",
+        "host": "Mr. Bridgemohan"
+      }
+    ],
+    "pastStreams": [
+      {
+        "date": "2026-02-20",
+        "topic": "Intro to HTML/CSS",
+        "views": 45
+      },
+      {
+        "date": "2026-02-13",
+        "topic": "Python Basics",
+        "views": 52
+      },
+      {
+        "date": "2026-02-06",
+        "topic": "Club Orientation",
+        "views": 78
+      }
+    ]
+  },
+
+  "goals": {
+    "quarter1": {
+      "title": "Q1 2026 Goals",
+      "items": [
+        "Launch redesigned club website",
+        "Host 12 workshop sessions",
+        "Recruit 40 new members",
+        "Start mentoring program",
+        "Purchase new drones and equipment"
+      ]
+    },
+    "quarter2": {
+      "title": "Q2 2026 Goals",
+      "items": [
+        "Organize first school-wide hackathon",
+        "Complete community service project",
+        "Host industry speaker series (4 speakers)",
+        "Participate in national tech competition",
+        "Launch coding club for beginners"
+      ]
+    },
+    "quarter3": {
+      "title": "Q3 2026 Goals",
+      "items": [
+        "Develop and publish 5 student apps",
+        "Host cyber security challenge",
+        "Present at school tech fair",
+        "Start podcast about tech careers",
+        "Collaborate with other schools"
+      ]
+    },
+    "quarter4": {
+      "title": "Q4 2026 Goals",
+      "items": [
+        "Year-end tech showcase",
+        "Graduation ceremony for seniors",
+        "Document all projects for portfolio",
+        "Plan for next year's leadership",
+        "Awards ceremony"
+      ]
+    }
+  },
+
+  "resources": {
+    "github": "https://github.com/wsstechclub",
+    "discord": "https://discord.gg/wsstech",
+    "instagram": "https://instagram.com/wsstechclub",
+    "tiktok": "@wsstechclub",
+    "email": "wetechwss@gmail.com"
+  },
+
+  "achievements": [
+    {
+      "year": 2026,
+      "title": "National Tech Competition Finalists",
+      "description": "3 teams reached finals in web dev category"
+    },
+    {
+      "year": 2025,
+      "title": "Best School Club Award",
+      "description": "Recognized for innovation and community impact"
+    },
+    {
+      "year": 2025,
+      "title": "5 Student Apps Published",
+      "description": "Learning tools and games created by members"
+    },
+    {
+      "year": 2024,
+      "title": "Club Founded",
+      "description": "Started with 12 passionate members"
+    }
+  ]
+}
